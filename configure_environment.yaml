@@ -1,0 +1,16 @@
+---
+- name: Run multiple playbooks sequentially
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Run install-docker playbook
+      command: ansible-playbook -i inventory install-docker.yaml
+
+    - name: Run database_conf playbook
+      command: ansible-playbook -i inventory database_conf.yaml
+
+    - name: Run backend_conf playbook
+      command: ansible-playbook -i inventory backend_conf.yaml
+
+    - name: Run frontend_conf playbook with extra variable
+      command: ansible-playbook -i inventory frontend_conf.yaml -e "backend_ip=TO_CHANGE"

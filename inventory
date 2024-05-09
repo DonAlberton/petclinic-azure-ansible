@@ -1,0 +1,14 @@
+[dockermachines]
+10.0.0.20 ansible_python_interpreter=/usr/bin/python3
+
+[databases]
+10.0.0.20 ansible_python_interpreter=/usr/bin/python3
+
+
+[dockermachines:vars]
+ansible_user=azureuser
+ansible_password=Losowehaslo123!
+
+[databases:vars]
+ansible_user=azureuser
+ansible_password=Losowehaslo123!

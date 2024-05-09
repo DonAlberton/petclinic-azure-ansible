@@ -1,0 +1,25 @@
+---
+- name: Configure Backends
+  hosts: backends
+  become: true
+
+  tasks:
+  - name: Login to Docker
+    community.docker.docker_login:
+      username: aszpej
+      password: Paim2023_
+
+  - name: Pull image
+    community.docker.docker_image:
+      name: aszpej/petclinic-rest:1.0
+      source: pull
+
+  - name: Deploy Backend container
+    community.docker.docker_container:
+      name: backend1
+      image: aszpej/petclinic-rest:1.0
+      ports: "9966:9966"
+      env:
+        DATABASE_IP: "localhost"
+      restart_policy: always
+      
